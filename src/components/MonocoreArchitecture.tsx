@@ -32,7 +32,7 @@ export function MonocoreArchitecture({ view }: { view: View }) {
   const [revision, setRevision] = useState(0);
   return (
     <figure className={`${styles.figure} not-prose`} aria-label={`Monocore ${view} architecture`}>
-      <div className={styles.eyebrow}>MONOCORE / {view === "shell" ? "01 — CANONICAL MODEL" : view === "compile" ? "02 — PLATFORM COMPILATION" : "03 — SYNCHRONIZATION"}</div>
+      <div className={styles.eyebrow}>MONOCORE / {view === "shell" ? "01: CANONICAL MODEL" : view === "compile" ? "02: PLATFORM COMPILATION" : "03: SYNCHRONIZATION"}</div>
       {view === "shell" ? <>
         <div className={styles.controls} role="group" aria-label="Screen presentation">
           {(Object.keys(shells) as (keyof typeof shells)[]).map(name => <button key={name} aria-pressed={shell === name} onClick={() => setShell(name)}>{name}</button>)}
