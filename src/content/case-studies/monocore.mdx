@@ -1,5 +1,5 @@
 ---
-title: "Monocore — One system, across platforms"
+title: "Monocore: One system, across platforms"
 description: "A joint source of truth across iOS, Android and the docs site. Architecture and tooling that keep design intent, platform compositions and documentation in sync."
 category: "Platform Systems"
 tags: ["Systems Architecture", "Design Systems", "Figma MCP", "Cross-platform"]
@@ -12,7 +12,7 @@ featured: true
 
 ## A joint source of truth
 
-Monocore is the upgrade of the Teams UI design system for Teams Mobile, shared by Teams, SharePoint and Engage. Beyond the components themselves, I built the architecture and tooling that keep the iOS toolkit, the Android toolkit and the documentation site in sync as one system — where a change made in any of them propagates to the others — using the Figma MCP and Plugin API as the execution layer.
+Monocore is the upgrade of the Teams UI design system for Teams Mobile, shared by Teams, SharePoint and Engage. Beyond the components themselves, I built the architecture and tooling that keep the iOS toolkit, the Android toolkit and the documentation site in sync as one system, using the Figma MCP and Plugin API as the execution layer. A change made in any of them propagates to the others.
 
 ## The problem: maintaining intent across outputs
 
@@ -20,7 +20,7 @@ Parallel platform libraries create parallel maintenance work. A structural decis
 
 My role was to define the shared model and build the tooling that turns those representations into a connected system. The architectural goal was to preserve intent while making platform differences explicit.
 
-## 01 — A canonical model of the shell
+## 01: A canonical model of the shell
 
 I separated the platform-independent shell from the app-specific canvas. Tab roots, pushed screens and modal screens describe navigation and presentation; the canvas holds each product’s composition and content. That boundary lets the same model describe iOS and Android without flattening their native conventions.
 
@@ -28,7 +28,7 @@ I separated the platform-independent shell from the app-specific canvas. Tab roo
 
 The key decision was to model the structure before constructing the interface. UI construction becomes compilation from a shared contract: the shell supplies predictable structure, and the canvas preserves product flexibility.
 
-## 02 — Compile across platforms
+## 02: Compile across platforms
 
 Using the Figma MCP and Plugin API, I built a path from iOS compositions to Android. Content and icons are preserved, while Material 3 and adaptiveness are applied as explicit rules. Differences are reported so platform adaptation remains inspectable.
 
@@ -36,7 +36,7 @@ Using the Figma MCP and Plugin API, I built a path from iOS compositions to Andr
 
 Shared Monocore Variables resolve tokens for each platform and mode. The system carries semantic intent through the translation, then resolves the appropriate platform representation. This avoids encoding a visual resemblance as if it were a shared architectural rule.
 
-## 03 — A bidirectional synchronization loop
+## 03: A bidirectional synchronization loop
 
 The architecture connects four representations: iOS, Android, Variables and Documentation. Token, schema, artboard and platform-component changes propagate through the shared model to the affected outputs.
 
@@ -46,7 +46,7 @@ The diagram is an explanatory model of that workflow. It illustrates propagation
 
 A schema change restructured **54 iOS and 17 Android artboards**. That is a concrete example of structural change applied across the system, rather than a claim about time saved or production adoption.
 
-## 04 — Documentation as a verified output
+## 04: Documentation as a verified output
 
 Layout and Spec pages are generated from artboards with resolved tokens, dimensions and verification. Documentation describes the resulting composition, so changes to the underlying structure can be reflected in the same workflow.
 
