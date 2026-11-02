@@ -1,0 +1,44 @@
+---
+title: "Platform Architecture Redesign"
+description: "Led the UX architecture for a B2B analytics platform, rethinking navigation, data density, and workflow patterns for power users."
+category: "Platform Strategy"
+tags: ["UX Architecture", "Research", "Prototyping"]
+date: "2025-03-01"
+role: "Lead Designer"
+team: "2 designers, 1 researcher, 6 engineers"
+duration: "12 months"
+featured: true
+---
+
+## The Challenge
+
+The analytics platform had evolved organically over five years, accumulating features without a coherent information architecture. Power users had learned to navigate the complexity, but new users faced a steep learning curve, and feature discoverability was critically low.
+
+## Research
+
+We conducted 24 user interviews, analyzed session recordings, and ran card sorting exercises to understand users' mental models. The research revealed that users thought about data in terms of "questions and answers," not the product's feature-based navigation.
+
+<Callout type="insight">
+Users consistently described their workflow as "I need to answer a question" — not "I need to use the dashboard builder." This insight reshaped our entire navigation model.
+</Callout>
+
+## The Redesign
+
+### Question-Driven Navigation
+
+We restructured the platform around user questions rather than features. The new architecture centered on three modes: Explore (ask questions), Build (create artifacts), and Share (distribute insights).
+
+### Progressive Complexity
+
+The new interface surfaced simple interactions by default, with progressive disclosure patterns that revealed advanced controls as users needed them. This maintained power-user efficiency while dramatically improving the new-user experience.
+
+<MetricRow metrics={[
+  { label: "Task completion rate", value: "+35%", change: "New users" },
+  { label: "Time to insight", value: "-45%", change: "All users" },
+  { label: "Feature discovery", value: "+80%", change: "Previously hidden features" },
+  { label: "NPS score", value: "+22", change: "Quarter over quarter" }
+]} />
+
+## Outcome
+
+The redesign shipped incrementally over 6 months with a feature-flag-based rollout. User satisfaction increased across all segments, with particular improvements in onboarding completion and feature adoption.

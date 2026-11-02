@@ -1,0 +1,167 @@
+---
+title: "Spatial UI — Microsoft Teams on Vision Pro"
+description: "Led spatial design for the first Microsoft Teams experience on visionOS, defining interaction principles, depth hierarchy, and platform-specific design patterns for Apple Vision Pro."
+category: "Spatial Computing"
+tags: ["visionOS", "Spatial UI", "Platform UX", "Design Systems", "Accessibility"]
+date: "2025-02-01"
+role: "Spatial Design Lead"
+team: "Cross-functional v-team: 2 designers, 3 engineers, PM, accessibility lead"
+duration: "8 months"
+hero_image: "/images/spatial-ui-hero.jpg"
+featured: true
+---
+---
+title: "Spatial UI"
+description: "Designing Microsoft Teams for spatial computing on Apple Vision Pro"
+---
+
+## Overview
+
+![Microsoft Teams meeting on Apple Vision Pro](/images/spatial-ui/cover-meeting.png)
+
+As part of Microsoft Teams core design, I led spatial design for the first Teams experience on Apple Vision Pro. This work extended beyond adapting existing screens. It required defining how a mature collaboration product behaves in a spatial computing environment.
+
+The challenge was not to make Teams feel futuristic. It was to make it feel native to the platform while remaining recognizably Teams. That required a system that could support spatial hierarchy, window relationships, accessibility, and interaction consistency across a wide range of scenarios.
+
+Rather than designing isolated views, I focused on establishing a spatial model that design and engineering could apply across the product.
+
+![Immersive chat experience with spatial reactions](/images/spatial-ui/cover-chat.png)
+
+## Context
+
+This work builds on years of design system thinking across Teams. Existing patterns could not simply be placed into three dimensional space. They needed to be reinterpreted through a new interaction model while preserving clarity, familiarity, and enterprise reliability.
+
+I operated as the primary design lead across these explorations, defining system principles that informed both immediate implementation and future platform expansion.
+
+## Designing for Spatial Interaction
+
+I structured the work around a set of focused explorations. Each one addressed a core constraint introduced by spatial computing, from authentication and presence to windowing and state management.
+
+These explorations helped define a broader system rather than a collection of one off solutions.
+
+---
+
+## Section: System Integration
+
+Enterprise access in spatial computing still depends on trust, identity, and secure device registration. That meant core authentication patterns needed to work seamlessly within the new environment without increasing friction.
+
+![Device registration flow in spatial UI](/images/spatial-ui/auth-device-registration.png)
+
+I integrated Microsoft Authenticator directly into the spatial experience to support secure sign in and device registration. The interaction model was intentionally simplified. Registration state, validation, and device status are presented clearly so users can complete critical setup tasks without unnecessary UI complexity.
+
+![Settings and feedback flow](/images/spatial-ui/auth-settings.png)
+
+![Feedback confirmation dialog](/images/spatial-ui/auth-feedback.png)
+
+This reinforced an important principle for spatial product design. System flows should feel quieter, not heavier. Even foundational enterprise tasks benefit from reduced interface noise when translated into immersive environments.
+
+---
+
+## Section: Focused Collaboration
+
+I designed meetings around a single primary surface. Shared content remains the visual anchor, while participant video and controls stay available as supporting elements.
+
+![Meeting gallery view with participant grid](/images/spatial-ui/meeting-gallery-detail.png)
+
+This creates a deliberate hierarchy:
+- one primary surface for focus
+- secondary areas for people and controls
+- minimal persistent UI
+
+![Presentation mode with shared content as primary surface](/images/spatial-ui/meeting-presentation.png)
+
+The goal was not to fill space. It was to preserve attention. In spatial environments, restraint matters more because every additional layer competes with presence, content, and comfort.
+
+---
+
+## Section: Platform Consistency and Accessibility
+
+Spatial computing introduces a new interaction model, but users still rely on familiar platform behaviors. I aligned touch targets, spacing, and interaction zones with OS conventions while adapting them for eye tracking and gesture input.
+
+![Touch vs eye tracking interaction comparison](/images/spatial-ui/touch-vs-eye-tracking.png)
+
+Targets become slightly larger and more separated to support clean selection. This was not treated as a visual preference. It was a functional accessibility requirement.
+
+This approach ensures:
+- familiar interaction patterns across devices
+- reduced learning curve
+- improved selection confidence
+- consistent behavior across platforms
+
+Accessibility was defined as a system constraint from the start.
+
+---
+
+## Section: State Management in Depth
+
+Visual states behave differently in spatial UI than in flat interfaces. Layered translucency can amplify contrast, blur, and opacity in unintended ways when surfaces overlap.
+
+![State management across spatial surface layers](/images/spatial-ui/state-management.png)
+
+To address this, I defined state behavior semantically rather than relying only on visual treatment. Tokens were created at each surface level so selection, hover, and emphasis remain consistent regardless of depth or overlap.
+
+This prevents state multiplication and creates a more stable visual system. It also improves engineering clarity by establishing rules that scale across surfaces.
+
+---
+
+## Section: Flexible Windowing
+
+Spatial environments allow content to move beyond fixed frames. At the same time, too much freedom can create fragmentation.
+
+I designed a windowing model that balances both. Primary content remains anchored to main contexts, while supporting surfaces can detach and reposition when needed.
+
+![Frontline worker experience with detachable content surfaces](/images/spatial-ui/frontline-worker-detail.png)
+
+This supports:
+- anchored primary windows
+- detachable secondary content
+- persistent context during multitasking
+- flexibility in immersive scenarios
+
+Movement is only valuable when it maintains orientation and task continuity.
+
+---
+
+## Section: Unified Spatial System
+
+The goal was system cohesion. Chat, meetings, calendar, and collaboration surfaces all share the same interaction language for hierarchy, movement, positioning, and focus.
+
+![Chat activity and conversation view](/images/spatial-ui/chat-activity.png)
+
+![Immersive chat with spatial emoji reactions](/images/spatial-ui/immersive-chat.png)
+
+![Calendar with meeting details](/images/spatial-ui/calendar-detail.png)
+
+![Channels and feed experience](/images/spatial-ui/channels-feed.png)
+
+This allows users to move between contexts without relearning behavior. The experience feels consistent across scenarios rather than fragmented.
+
+Strong spatial products are not defined by depth alone. They are defined by consistency across depth, interaction, and purpose.
+
+---
+
+## System Principles
+
+A small set of principles guided every decision:
+
+- prioritize clarity over novelty  
+- use depth to communicate hierarchy, not decoration  
+- maintain consistency across platforms  
+- define accessibility as a system constraint  
+- support flexibility without losing structure  
+
+These principles created alignment across design and engineering and made it possible to scale the work.
+
+## Outcome
+
+This work shipped as part of the first Microsoft Teams experience on Apple Vision Pro. More importantly, it established a spatial framework that supports future expansion.
+
+The layer model, windowing logic, accessibility guidance, and interaction patterns turned a new platform challenge into a scalable system.
+
+## Reflection
+
+New platforms require clear principles early. Without them, spatial UI quickly becomes fragmented.
+
+This work reinforced that design systems are not only useful for scaling across teams and screens. They are critical when extending products into entirely new interaction models.
+
+The most valuable outcome was not a single interface. It was a system the team can continue building on.
