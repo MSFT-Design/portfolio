@@ -1,0 +1,68 @@
+---
+title: "Monocore — One system, across platforms"
+description: "A joint source of truth across iOS, Android and the docs site. Architecture and tooling that keep design intent, platform compositions and documentation in sync."
+category: "Platform Systems"
+tags: ["Systems Architecture", "Design Systems", "Figma MCP", "Cross-platform"]
+date: "2026-11-02"
+role: "Design systems architecture & tooling"
+team: "Microsoft · Teams Mobile"
+duration: "Ongoing"
+featured: true
+---
+
+## A joint source of truth
+
+Monocore is the upgrade of the Teams UI design system for Teams Mobile, shared by Teams, SharePoint and Engage. Beyond the components themselves, I built the architecture and tooling that keep the iOS toolkit, the Android toolkit and the documentation site in sync as one system — where a change made in any of them propagates to the others — using the Figma MCP and Plugin API as the execution layer.
+
+## The problem: maintaining intent across outputs
+
+Parallel platform libraries create parallel maintenance work. A structural decision must survive translation between iOS, Android, shared variables and documentation. When those representations drift, teams must rediscover what was intended and which version to trust.
+
+My role was to define the shared model and build the tooling that turns those representations into a connected system. The architectural goal was to preserve intent while making platform differences explicit.
+
+## 01 — A canonical model of the shell
+
+I separated the platform-independent shell from the app-specific canvas. Tab roots, pushed screens and modal screens describe navigation and presentation; the canvas holds each product’s composition and content. That boundary lets the same model describe iOS and Android without flattening their native conventions.
+
+<MonocoreArchitecture view="shell" />
+
+The key decision was to model the structure before constructing the interface. UI construction becomes compilation from a shared contract: the shell supplies predictable structure, and the canvas preserves product flexibility.
+
+## 02 — Compile across platforms
+
+Using the Figma MCP and Plugin API, I built a path from iOS compositions to Android. Content and icons are preserved, while Material 3 and adaptiveness are applied as explicit rules. Differences are reported so platform adaptation remains inspectable.
+
+<MonocoreArchitecture view="compile" />
+
+Shared Monocore Variables resolve tokens for each platform and mode. The system carries semantic intent through the translation, then resolves the appropriate platform representation. This avoids encoding a visual resemblance as if it were a shared architectural rule.
+
+## 03 — A bidirectional synchronization loop
+
+The architecture connects four representations: iOS, Android, Variables and Documentation. Token, schema, artboard and platform-component changes propagate through the shared model to the affected outputs.
+
+<MonocoreArchitecture view="sync" />
+
+The diagram is an explanatory model of that workflow. It illustrates propagation rather than connecting to internal Figma files or executing the compiler.
+
+A schema change restructured **54 iOS and 17 Android artboards**. That is a concrete example of structural change applied across the system, rather than a claim about time saved or production adoption.
+
+## 04 — Documentation as a verified output
+
+Layout and Spec pages are generated from artboards with resolved tokens, dimensions and verification. Documentation describes the resulting composition, so changes to the underlying structure can be reflected in the same workflow.
+
+The execution boundary matters: Figma MCP and the Plugin API perform the operations; the schema, token bindings and platform rules define what those operations should produce. Verification makes the resulting structure inspectable rather than relying only on visual similarity.
+
+The companion [Monocore documentation repository](https://github.com/MSFT-Design/monocore-docs-publish) includes architecture, the cold-start pipeline, component specifications, semantic surfaces and spec completeness.
+
+## Outcomes and rollout
+
+- One Figma library supports Teams, SharePoint and Engage mobile. Each product retains ownership of its code library while sharing design-system tokens and principles.
+- The soft launch began with iOS after validation against key product scenarios and accessibility tests.
+- The toolkit includes Liquid Glass, with scheduled visual-refresh improvements and expansion to more devices.
+- Schema-driven restructuring reached 71 artboards across the two platform toolkits; documentation is generated from the resulting artboards.
+
+## Reflection
+
+The most consequential design decision was the boundary between shared intent and platform expression. A useful canonical model must preserve native behavior while giving structural changes a predictable route through the system.
+
+Monocore makes that route explicit: model the intent, apply platform rules, construct the composition and verify its documentation. The value lies in keeping those decisions connected as the system evolves.

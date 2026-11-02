@@ -17,6 +17,14 @@ import { useRef, useState } from "react";
 /* ───── Data ───── */
 const featuredWork = [
   {
+    title: "Monocore — One system, across platforms",
+    description: "Architecture and tooling connecting iOS, Android, shared variables and documentation through a canonical design-system model.",
+    category: "Platform Systems",
+    tags: ["Systems Architecture", "Design Systems", "Figma MCP"],
+    href: "/work/monocore",
+    featured: true,
+  },
+  {
     title: "Spatial UI — Microsoft Teams on Apple Vision Pro",
     description:
       "Led spatial design for the first Microsoft Teams experience on visionOS, defining interaction principles, depth hierarchy, and platform-specific design patterns.",

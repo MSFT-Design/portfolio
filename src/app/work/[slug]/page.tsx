@@ -18,9 +18,11 @@ import {
   MDXol,
   MDXImg,
 } from "@/components/MDXComponents";
+import { MonocoreArchitecture } from "@/components/MonocoreArchitecture";
 import remarkGfm from "remark-gfm";
 
 const mdxComponents = {
+  MonocoreArchitecture,
   CaseImage,
   CaseVideo,
   Callout,
