@@ -6,7 +6,7 @@ import { MotionSection } from "@/components/MotionSection";
 
 const projects = [
   {
-    title: "Monocore — One system, across platforms",
+    title: "Monocore: One system, across platforms",
     description: "Architecture and tooling connecting iOS, Android, shared variables and documentation through a canonical design-system model.",
     category: "Platform Systems",
     tags: ["Systems Architecture", "Design Systems", "Figma MCP"],
