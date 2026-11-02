@@ -22,7 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    // Theme switch: set data-theme to "light" or "dark". See globals.css for token definitions.
+    <html lang="en" data-theme="light">
       <body className="min-h-screen bg-background text-text-primary antialiased">
         <CursorEffect />
         <Navbar />

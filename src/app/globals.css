@@ -4,7 +4,81 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap");
 
-/* ─── Cinematic Motion Tokens ─── */
+/* ─────────────────────────────────────────────────────────────
+   SEMANTIC THEME TOKENS
+
+   Switch themes by setting `data-theme="light"` or `data-theme="dark"`
+   on the <html> element in src/app/layout.tsx. Light is the default.
+
+   Color variables are stored as space-separated R G B triplets so
+   Tailwind utilities can inject alpha (e.g. `bg-accent/40`).
+
+   Decorative variables (patterns, glows, grain) are stored as full
+   color values so each theme can override opacity and blend behavior.
+   ───────────────────────────────────────────────────────────── */
+
+:root,
+:root[data-theme="light"] {
+  /* Core palette */
+  --color-background: 250 249 246;        /* #FAF9F6 — warm paper */
+  --color-surface: 255 255 255;           /* #FFFFFF */
+  --color-surface-elevated: 246 245 241;  /* #F6F5F1 */
+  --color-surface-hover: 239 237 232;     /* #EFEDE8 */
+  --color-border: 230 228 225;            /* #E6E4E1 */
+  --color-border-subtle: 240 238 235;     /* #F0EEEB */
+  --color-accent: 74 123 255;             /* #4A7BFF */
+  --color-accent-hover: 58 107 239;       /* #3A6BEF */
+  --color-accent-warm: 255 107 74;        /* #FF6B4A */
+  --color-text-primary: 10 10 12;         /* #0A0A0C */
+  --color-text-secondary: 58 58 66;       /* #3A3A42 */
+  --color-text-tertiary: 106 106 117;     /* #6A6A75 */
+  --color-rec: 255 59 59;                 /* #FF3B3B */
+
+  /* Decorative overlays */
+  --pattern-line: rgba(10, 10, 15, 0.04);
+  --pattern-dot: rgba(10, 10, 15, 0.06);
+  --glow-color: rgba(74, 123, 255, 0.08);
+  --glow-color-strong: rgba(74, 123, 255, 0.14);
+  --text-stroke-color: rgba(10, 10, 12, 0.12);
+  --grain-opacity: 0.22;
+  --shadow-ambient:
+    0 1px 2px rgba(10, 10, 15, 0.06),
+    0 0 40px rgba(74, 123, 255, 0.05);
+  --shadow-accent:
+    0 0 40px rgba(74, 123, 255, 0.08),
+    0 0 80px rgba(74, 123, 255, 0.04);
+}
+
+:root[data-theme="dark"] {
+  --color-background: 5 5 6;              /* #050506 */
+  --color-surface: 10 10 12;              /* #0A0A0C */
+  --color-surface-elevated: 17 17 20;     /* #111114 */
+  --color-surface-hover: 24 24 28;        /* #18181C */
+  --color-border: 26 26 31;               /* #1A1A1F */
+  --color-border-subtle: 19 19 22;        /* #131316 */
+  --color-accent: 74 123 255;
+  --color-accent-hover: 90 136 255;       /* #5A88FF */
+  --color-accent-warm: 255 107 74;
+  --color-text-primary: 240 240 242;      /* #F0F0F2 */
+  --color-text-secondary: 138 138 150;    /* #8A8A96 */
+  --color-text-tertiary: 85 85 95;        /* #55555F */
+  --color-rec: 255 59 59;
+
+  --pattern-line: rgba(255, 255, 255, 0.015);
+  --pattern-dot: rgba(255, 255, 255, 0.03);
+  --glow-color: rgba(74, 123, 255, 0.04);
+  --glow-color-strong: rgba(74, 123, 255, 0.08);
+  --text-stroke-color: rgba(240, 240, 242, 0.15);
+  --grain-opacity: 0.4;
+  --shadow-ambient:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 0 60px rgba(74, 123, 255, 0.03);
+  --shadow-accent:
+    0 0 40px rgba(74, 123, 255, 0.06),
+    0 0 80px rgba(74, 123, 255, 0.03);
+}
+
+/* ─── Motion tokens (theme-agnostic) ─── */
 :root {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -16,9 +90,6 @@
   --duration-slow: 600ms;
   --duration-slower: 1000ms;
   --duration-cinematic: 1400ms;
-
-  --glow-color: rgba(74, 123, 255, 0.04);
-  --glow-color-strong: rgba(74, 123, 255, 0.08);
 }
 
 @layer base {
@@ -61,7 +132,7 @@
   }
 
   ::selection {
-    @apply bg-accent/20 text-white;
+    @apply bg-accent/20 text-text-primary;
   }
 
   /* ─── Scrollbar — hidden for cinematic feel ─── */
@@ -99,15 +170,15 @@
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(
       135deg,
-      rgba(10, 10, 12, 1) 0%,
-      rgba(74, 123, 255, 1) 50%,
-      rgba(10, 10, 12, 0.9) 100%
+      rgb(var(--color-text-primary)) 0%,
+      rgb(var(--color-accent)) 50%,
+      rgb(var(--color-text-primary) / 0.9) 100%
     );
     background-size: 200% auto;
   }
 
   .text-stroke {
-    -webkit-text-stroke: 1px rgba(240, 240, 242, 0.15);
+    -webkit-text-stroke: 1px var(--text-stroke-color);
     color: transparent;
   }
 
@@ -121,15 +192,11 @@
   }
 
   .glow-subtle {
-    box-shadow:
-      0 0 60px rgba(74, 123, 255, 0.03),
-      0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-ambient);
   }
 
   .glow-accent {
-    box-shadow:
-      0 0 40px rgba(74, 123, 255, 0.06),
-      0 0 80px rgba(74, 123, 255, 0.03);
+    box-shadow: var(--shadow-accent);
   }
 
   /* ─── HUD / Recording Interface Overlays ─── */
@@ -144,7 +211,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border: 1px solid rgba(74, 123, 255, 0.08);
+    border: 1px solid var(--glow-color);
     pointer-events: none;
   }
 
@@ -158,7 +225,7 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    border-color: rgba(74, 123, 255, 0.2);
+    border-color: var(--glow-color-strong);
     border-style: solid;
     pointer-events: none;
   }
@@ -178,13 +245,13 @@
   /* ─── Background patterns ─── */
   .grid-pattern {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      linear-gradient(var(--pattern-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--pattern-line) 1px, transparent 1px);
     background-size: 80px 80px;
   }
 
   .dot-pattern {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-image: radial-gradient(var(--pattern-dot) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
@@ -200,7 +267,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(74, 123, 255, 0.15), transparent);
+    background: linear-gradient(90deg, transparent, var(--glow-color-strong), transparent);
     animation: scan 4s ease-in-out infinite;
     pointer-events: none;
   }
@@ -220,7 +287,7 @@
     animation: grain 0.5s steps(6) infinite;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.4;
+    opacity: var(--grain-opacity);
   }
 
   /* ─── Cinematic divider ─── */
@@ -230,62 +297,37 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(74, 123, 255, 0.12) 20%,
-      rgba(74, 123, 255, 0.25) 50%,
-      rgba(74, 123, 255, 0.12) 80%,
+      rgb(var(--color-accent) / 0.12) 20%,
+      rgb(var(--color-accent) / 0.25) 50%,
+      rgb(var(--color-accent) / 0.12) 80%,
       transparent 100%
     );
   }
 
-  /* ─── White zone — inverted colors for light background ─── */
+  /* ─────────────────────────────────────────────────────────
+     Scoped light-mode override.
+
+     Apply `.white-zone` to any subtree to force light-palette
+     tokens regardless of the active theme. Useful for scroll-
+     driven inversions (see src/app/page.tsx AnimatedBackground).
+     With `data-theme="light"` globally, this is effectively a
+     no-op; it becomes a visible inversion when theme is dark.
+     ───────────────────────────────────────────────────────── */
   .white-zone {
-    --text-primary: #0a0a0c;
-    --text-secondary: #3a3a42;
-    --text-tertiary: #6a6a75;
-    --border-color: rgba(0, 0, 0, 0.08);
-    color: #0a0a0c;
-  }
+    --color-background: 250 249 246;
+    --color-surface: 255 255 255;
+    --color-surface-elevated: 246 245 241;
+    --color-surface-hover: 239 237 232;
+    --color-border: 230 228 225;
+    --color-border-subtle: 240 238 235;
+    --color-text-primary: 10 10 12;
+    --color-text-secondary: 58 58 66;
+    --color-text-tertiary: 106 106 117;
 
-  .white-zone .timecode,
-  .white-zone .text-text-tertiary,
-  .white-zone .rec-indicator {
-    color: #6a6a75;
-  }
-
-  .white-zone .text-text-primary,
-  .white-zone h2,
-  .white-zone h3 {
-    color: #0a0a0c;
-  }
-
-  .white-zone .text-text-secondary,
-  .white-zone p {
-    color: #3a3a42;
-  }
-
-  .white-zone .scene-divider {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(0, 0, 0, 0.06) 20%,
-      rgba(0, 0, 0, 0.12) 50%,
-      rgba(0, 0, 0, 0.06) 80%,
-      transparent 100%
-    );
-  }
-
-  .white-zone .grid-pattern {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-  }
-
-  .white-zone .bg-gradient-to-t {
-    --tw-gradient-from: rgba(230, 228, 225, 0.4);
-  }
-
-  .white-zone .bg-gradient-to-br {
-    --tw-gradient-from: rgba(74, 123, 255, 0.04);
+    --pattern-line: rgba(10, 10, 15, 0.04);
+    --pattern-dot: rgba(10, 10, 15, 0.06);
+    --text-stroke-color: rgba(10, 10, 12, 0.12);
+    color: rgb(var(--color-text-primary));
   }
 
   /* ─── Ambient radial light ─── */
@@ -303,8 +345,8 @@
     height: 800px;
     background: radial-gradient(
       circle,
-      rgba(74, 123, 255, 0.03) 0%,
-      rgba(74, 123, 255, 0.01) 40%,
+      var(--glow-color) 0%,
+      rgb(var(--color-accent) / 0.01) 40%,
       transparent 70%
     );
     pointer-events: none;
