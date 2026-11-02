@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/asset";
 
 interface ProjectSceneProps {
   number: string;
@@ -179,7 +180,7 @@ export function ProjectScene({
             {image ? (
               <div className="relative aspect-[4/5] rounded-sm overflow-hidden group-hover:shadow-2xl transition-shadow duration-700">
                 <Image
-                  src={image}
+                  src={withBasePath(image)}
                   alt={title}
                   fill
                   className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.04]"

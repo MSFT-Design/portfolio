@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/asset";
 
 interface WorkCardProps {
   title: string;
@@ -45,7 +46,7 @@ export function WorkCard({
           <div className="relative overflow-hidden aspect-[16/9] bg-surface-elevated">
             {image ? (
               <Image
-                src={image}
+                src={withBasePath(image)}
                 alt={title}
                 fill
                 className="object-cover transition-all duration-1000 ease-out group-hover:scale-[1.03] group-hover:opacity-80"

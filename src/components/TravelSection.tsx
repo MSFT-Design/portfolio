@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { withBasePath } from "@/lib/asset";
 
 /* ═══════════════════════════════════════════════════════════
    Cinematic Travel Section — Full Page
@@ -31,7 +32,7 @@ function EntryFrame() {
       >
         <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl">
           <Image
-            src="/images/travel/mountain-landscape.png"
+            src={withBasePath("/images/travel/mountain-landscape.png")}
             alt="Mountain landscape at sunset"
             fill
             className="object-cover"
@@ -155,7 +156,7 @@ function SketchbookSequence() {
               }}
             >
               <Image
-                src={page.src}
+                src={withBasePath(page.src)}
                 alt="Sketchbook page"
                 fill
                 className="object-cover"
@@ -250,7 +251,7 @@ function WalkingPanel({
       <motion.div style={{ y: parallaxY }} className="relative">
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl">
           <Image
-            src={src}
+            src={withBasePath(src)}
             alt=""
             fill
             className="object-cover"
@@ -313,7 +314,7 @@ function ConnectionMoment() {
             >
               <div className="relative aspect-[3/4]">
                 <Image
-                  src="/images/travel/sketchbook-people.jpg"
+                  src={withBasePath("/images/travel/sketchbook-people.jpg")}
                   alt="Sketchbook close-up"
                   fill
                   className="object-cover"
@@ -437,7 +438,7 @@ function ExitFrame() {
         <motion.div style={{ scale }} className="relative">
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl">
             <Image
-              src="/images/travel/hills-path.png"
+              src={withBasePath("/images/travel/hills-path.png")}
               alt="Path disappearing into the hills"
               fill
               className="object-cover"
@@ -538,7 +539,7 @@ export function TravelEntryPoint() {
               className="relative aspect-[4/3] overflow-hidden rounded-2xl"
             >
               <Image
-                src="/images/travel/mountain-landscape.png"
+                src={withBasePath("/images/travel/mountain-landscape.png")}
                 alt="Mountain landscape at sunset"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -559,7 +560,7 @@ export function TravelEntryPoint() {
               className="relative aspect-[4/3] overflow-hidden rounded-2xl"
             >
               <Image
-                src="/images/travel/sketchbook-people.jpg"
+                src={withBasePath("/images/travel/sketchbook-people.jpg")}
                 alt="Sketchbook drawing of a street scene"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"

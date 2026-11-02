@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, type ReactNode } from "react";
+import { withBasePath } from "@/lib/asset";
 
 /* ───── Custom MDX Components ───── */
 
@@ -24,7 +25,7 @@ function CaseImage({
       className=""
     >
       <div className="rounded-2xl overflow-hidden border border-border">
-        <Image src={src} alt={alt} width={1920} height={1080} className="w-full h-auto block" />
+        <Image src={withBasePath(src)} alt={alt} width={1920} height={1080} className="w-full h-auto block" />
       </div>
       {caption && (
         <figcaption className="mt-3 text-caption text-text-tertiary text-center">
@@ -52,7 +53,7 @@ function CaseVideo({
     >
       <div className="relative rounded-2xl overflow-hidden border border-border bg-surface-elevated">
         <video
-          src={src}
+          src={withBasePath(src)}
           autoPlay
           loop
           muted
@@ -179,7 +180,7 @@ function ImageCarousel({
             transition={{ duration: 0.3 }}
           >
             <Image
-              src={images[current].src}
+              src={withBasePath(images[current].src)}
               alt={images[current].alt}
               width={1920}
               height={1080}

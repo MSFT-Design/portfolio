@@ -3,6 +3,7 @@
 import { MotionSection } from "@/components/MotionSection";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/lib/asset";
 import type { CaseStudyMeta } from "@/lib/case-studies";
 import type { ReactNode } from "react";
 
@@ -97,7 +98,7 @@ export function CaseStudyLayout({ meta, children }: CaseStudyLayoutProps) {
           <div className="relative aspect-video rounded-2xl overflow-hidden border border-border bg-surface-elevated">
             {meta.hero_video ? (
               <video
-                src={meta.hero_video}
+                src={withBasePath(meta.hero_video)}
                 autoPlay
                 loop
                 muted
@@ -106,7 +107,7 @@ export function CaseStudyLayout({ meta, children }: CaseStudyLayoutProps) {
               />
             ) : meta.hero_image ? (
               <Image
-                src={meta.hero_image}
+                src={withBasePath(meta.hero_image)}
                 alt={meta.title}
                 fill
                 className="object-cover"
