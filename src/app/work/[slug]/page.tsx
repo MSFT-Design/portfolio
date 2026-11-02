@@ -16,6 +16,7 @@ import {
   MDXp,
   MDXul,
   MDXol,
+  MDXImg,
 } from "@/components/MDXComponents";
 import remarkGfm from "remark-gfm";
 
@@ -32,6 +33,7 @@ const mdxComponents = {
   p: MDXp,
   ul: MDXul,
   ol: MDXol,
+  img: MDXImg,
 };
 
 interface Props {

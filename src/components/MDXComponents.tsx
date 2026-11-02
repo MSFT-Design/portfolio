@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useState, type ReactNode } from "react";
+import { useState, type ReactNode, type ImgHTMLAttributes } from "react";
 import { withBasePath } from "@/lib/asset";
 
 /* ───── Custom MDX Components ───── */
@@ -234,6 +234,14 @@ function ImageCarousel({
       </div>
     </motion.div>
   );
+}
+
+/* Markdown-authored `![alt](/path)` images — prefix basePath for subpath deploys. */
+export function MDXImg(props: ImgHTMLAttributes<HTMLImageElement>) {
+  const { src = "", alt = "", ...rest } = props;
+  const resolvedSrc = typeof src === "string" && src.startsWith("/") ? withBasePath(src) : src;
+  // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
+  return <img src={resolvedSrc} alt={alt} {...rest} />;
 }
 
 /* ───── Export individual components for MDX ───── */
